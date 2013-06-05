@@ -4,10 +4,10 @@ from ckeditor.fields import RichTextField
 import pytils
 
 class Article(models.Model):
-    title = models.CharField(max_length=128, verbose_name=u'заголовок')
+    title = models.CharField(max_length=512, verbose_name=u'заголовок')
     date = models.DateField(verbose_name=u'дата')
     content = RichTextField(verbose_name=u'контент')
-    slug = models.SlugField(verbose_name=u'слаг', unique=True, blank=True, help_text=u'Заполнять не нужно')
+    slug = models.SlugField(max_length=212, verbose_name=u'слаг', unique=True, blank=True, help_text=u'Заполнять не нужно')
     
     def save(self, *args, **kwargs):
         if not self.slug:
