@@ -22,8 +22,14 @@ urlpatterns = patterns('',
     url(r'^settings/', include('livesettings.urls')),
 
     url(r'^$' , views.home_page),
-    url(r'^request/$' , views.request_page),
+    url(r'^news/$' , views.news_page),
+    url(r'^news/(?P<page_name>[\w-]+)/$' , views.news_article_page),
+    url(r'^docs/$' , views.docs_page),
+    url(r'^docs/(?P<id>[\w-]+)/$' , views.docs_page),
+    url(r'^team/$' , views.team_page),
+    url(r'^team/(?P<id>[\w-]+)/$' , views.team_page),
+    url(r'^company/(?P<page_name>[\w-]+)/$' , views.company_page),
     url(r'^(?P<page_name>[\w-]+)/$' , views.other_page),
-    url(r'^news/(?P<page_name>[\w-]+)/$' , views.news_page),
+    
     
 )

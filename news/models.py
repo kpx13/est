@@ -21,6 +21,10 @@ class Article(models.Model):
         except:
             return None
     
+    @property
+    def desc(self):
+        return self.content[0:200]
+    
     class Meta:
         verbose_name = u'новость'
         verbose_name_plural = u'новости'

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load mptt_tags %}
+
+{% block content %}
+
+        <div class="row show-grid">
+            <div class="span12">
+
+                <div id="breadcrumb">
+                <ul>
+                    <li class="home"><a href="/">Главная</a></li>
+                    <li>Документы</li>
+                    <li>{{ item.name }}</li>
+                </ul>
+                </div>
+                <div class="row show-grid clear-both">                   
+                    <div id="left-sidebar" class="span3 sidebar">
+                        <div class="side-nav sidebar-block">
+                            <h2>Страницы</h2>
+                            <ul>
+                                {% recursetree docs %}
+                                    <li {% if node.id == item.id %} class="active" {% endif %}>
+                                        <a href="/docs/{{ node.id }}">{{ node.name }}</a>
+                                    </li>
+                                {% endrecursetree %}
+                            </ul>
+                        </div>                                
+                    </div>
+
+                    <div class="span9 main-column two-columns-left">
+                        <article>
+                            
+                            {% for i in item.docfile_set.all %}
+                                <h2><a href='/media/{{ i.file }}' target='blank'>{{ i.name }}</a></h2>
+                                <p>{{ i.desc }} <br />
+                                <a href='/media/{{ i.file }}' target='blank'>Скачать&nbsp;&raquo;</a>
+                                </p>
+                                <div class="text-divider6">
+                                    <span></span>
+                                </div>
+                            {% empty %}
+                                <h2>В этой категории ничего не найдено.</h2>
+                            {% endfor %}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -41,22 +41,21 @@ class CustomIndexDashboard(Dashboard):
             ]
         ))
         
-        
         self.children.append(
             modules.ModelList(
-                title = u'Страницы сайта',
+                title = u'Страницы о компании',
                 models=(
-                    'news.models.Article',
-                    'pages.models.Page',
+                    'company.models.Page',
                 ),
             )
         )
         
         self.children.append(
             modules.ModelList(
-                title = u'Заявки',
+                title = u'Другие страницы сайта',
                 models=(
-                    'order.models.Request',
+                    'news.models.Article',
+                    'pages.models.Page',
                 ),
             )
         )
@@ -72,13 +71,41 @@ class CustomIndexDashboard(Dashboard):
         
         self.children.append(
             modules.ModelList(
-                title = u'Отзывы',
+                title = u'Команда',
                 models=(
-                    'reviews.models.Review',
+                    'team.models.Category',
+                    'team.models.Employee',
                 ),
             )
         )
-
+        
+        self.children.append(
+            modules.ModelList(
+                title = u'Документы',
+                models=(
+                    'docs.models.Category',
+                    'docs.models.DocFile',
+                ),
+            )
+        )
+        
+        self.children.append(
+            modules.ModelList(
+                title = u'Новости',
+                models=(
+                    'news.models.Article',
+                ),
+            )
+        )
+        
+        self.children.append(
+            modules.ModelList(
+                title = u'Медиафайлы',
+                models=(
+                    'feincms.module.medialibrary.*',
+                ),
+            )
+        )
 
         # append a recent actions module
         self.children.append(modules.RecentActions(_('Recent Actions'), 5))

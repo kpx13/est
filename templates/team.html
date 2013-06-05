@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load mptt_tags %}
+
+{% block content %}
+
+        <div class="row show-grid">
+            <div class="span12">
+
+                <div id="breadcrumb">
+                <ul>
+                    <li class="home"><a href="/">Главная</a></li>
+                    <li><a href='/team/'>Команда</a></li>
+                    {% for b in breadcrumb %}
+                        <li><a href='/team/{{ b.id }}'>{{ b.name }}</a></li>
+                    {% endfor %}
+                    <li>{{ item.name }}</li>
+                </ul>
+                </div>
+                <div class="row show-grid clear-both">                   
+                    <div id="left-sidebar" class="span3 sidebar">
+                        {% if inner %}
+                        <div class="side-nav sidebar-block">
+                            <h2>{{ item.name }}</h2>
+                            <ul>
+                                {% recursetree inner %}
+                                    <li {% if node.id == item.id %} class="active" {% endif %}>
+                                        <a href="/team/{{ node.id }}">{{ node.name }}</a>
+                                    </li>
+                                {% endrecursetree %}
+                            </ul>
+                        </div>     
+                        {% endif %}
+                        
+                        <div class="side-nav sidebar-block">
+                           
+                            <h2>Сотрудники:</h2>
+                            <ul>
+                                {% for e in employeers %}
+                                    <li {% if node.id == item.id %} class="active" {% endif %}>
+                                        <a href="#employee_{{ e.id }}">{{ e.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                       
+                        </div>             
+                    </div>
+
+                
+                    
+                    
+                    <div class="span9 main-column two-columns-left">
+                        
+                            {% for e in employeers %}
+                                <div class="row show-grid team-member" id='employee_{{ e.id }}'>                                    
+                                    <div class="span3 photo">
+                                        <div class="bordered-img"><img alt="" src="/media/{{ e.photo }}"></div>
+                                    </div>
+                                    <div class="span6">
+                                        <h2>{{ e.name }}</h2>
+                                        <h4>{{ e.position }}</h4>
+                                        {{ e.text|safe }}
+                                    </div>
+                                    <div class="member-divider">                                        
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <h2>В этой категории ничего не найдено.</h2>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

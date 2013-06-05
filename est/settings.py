@@ -108,12 +108,16 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'sorl.thumbnail',
+    'feincms',
+    'mptt',
+    'feincms.module.medialibrary',
     
     'pages',
-    'order',
     'news',
     'slideshow',
-    'reviews'
+    'docs',
+    'team',
+    'company',
 )
 
 

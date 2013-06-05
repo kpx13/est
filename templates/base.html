@@ -1,19 +1,203 @@
-<title>{% block title %}{% endblock %}</title>
-
-{% block extended_head %}
-{% endblock %}
-
-{% if messages %}
-    <div>
-    {% for message in messages %}
-        <div class='message-wrapper'>
-            <div class="alert alert-{{ message.tags }}">
-                {{ message|safe }}
+{% load mptt_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="robots" content="follow, index" />
+        <!--  SEO STUFF END -->
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--  revolution slider plugin : begin -->        
+        <link rel="stylesheet" type="text/css" href="/static/rs-plugin/css/settings.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/static/css/rs-responsive.css" media="screen" />
+        <!--  revolution slider plugin : end -->
+        <link rel="stylesheet" href="/static/css/bootstrap.css" />
+        <link rel="stylesheet" href="/static/css/custom.css" />
+        <link rel="stylesheet" href="/static/css/isotope.css" />
+        <link rel="stylesheet" href="/static/css/color_scheme.css" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/static/css/font-awesome.css" />
+        <link rel="stylesheet" href="/static/css/font-awesome-ie7.css" />
+        <link rel="stylesheet" href="/static/css/flexslider.css" />
+        <link rel="stylesheet" href="/static/css/jquery.fancybox.css?v=2.1.0" type="text/css" media="screen" />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" type="text/css" href="/static/css/IE-fix.css" />
+        <![endif]-->
+        {% block extended_head %}
+        {% endblock %}
+    </head>
+    <body>
+<!-- THE LINE AT THE VERY TOP OF THE PAGE -->
+        <div class="top_line"></div>
+<!-- HEADER AREA -->
+        <header>
+            <div class="container">
+                <div class="row">
+<!-- HEADER: LOGO AREA -->
+                    <div class="span4 logo">
+                        <a class="logo" href="/">
+                            <img alt="logo" title="bizstrap" src="/static/img/logo.png">
+                        </a>
+                    </div>
+                    <div class="span4 offset4">
+<!-- HEADER: PHONE NUMBER -->
+                        <p class="head_phone">8 (495) 221-84-33</p>
+                    </div>
+<!-- HEADER: SOCIAL ICONS -->
+                    <ul class="socials unstyled">
+                        <li><a class="flickr" href="#"></a></li>
+                        <li><a class="twitter" href="#"></a></li>
+                        <li><a class="facebook" href="#"></a></li>
+                        <li><a class="youtube" href="#"></a></li>
+                        <li><a class="dribbble" href="#"></a></li>
+                        <li><a class="pinterest" href="#"></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-    </div>
-{% endif %}
+            
+            <div class="container">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <div class="buttons-container">
+                            </div>
+                            <div class="nav-collapse">
+                                <ul class="nav nav-pills">
+                                    <li class="active single">
+                                        <a href="/">
+                                            Главная<i></i>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            Компания<i></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/team">Структура компании</a></li>
+                                            {% for p in pages %}
+                                                <li><a href="/company/{{ p.slug }}">{{ p.title }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            Команда<i></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% recursetree team %}
+                                                <li><a href="/team/{{ node.id }}">{{ node.name }}</a></li>
+                                            {% endrecursetree %}
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            Документы<i></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% recursetree docs %}
+                                                <li><a href="/docs/{{ node.id }}">{{ node.name }}</a></li>
+                                            {% endrecursetree %}
+                                        </ul>
+                                    </li>
+                                    <li class="single">
+                                        <a href="/news/">
+                                            Новости<i></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+<!-- MAIN CONTENT AREA -->
+        <div class="main-content">
+            <div class="container">
+            
+                {% if messages %}
+                    <div>
+                        {% for message in messages %}
+                            <div class='message-wrapper'>
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message|safe }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                {% block content %}
+                {% endblock %}
+            </div>
 
-{% block content %}
-{% endblock %}
+        </div>
+        <footer id="footer">
+            <div class="footer-top"></div>
+            <div class="footer-wrapper">
+                <div class="container">
+                    <div class="row show-grid">
+                        <div class="span12">
+                            <div class="row show-grid">
+                                <div class="span4">
+                                    <address class="address">
+                                        <p><i class="icon-map-marker icon-large"></i>125040, г. Москва</p>
+                                        <p><i>&nbsp;</i>ул. Скаковая, д.32, стр.2</p>
+                                        <p><i>&nbsp;</i>7 этаж, офис 73</p>
+                                        <p><i class="icon-phone icon-large"></i>8 (495) 221-84-33</p>
+                                        <p><i class="icon-print icon-large"></i>info@est-stroy.ru</p>
+                                    </address>
+                                </div>
+                                <div class="span4 footer-center">
+                                    <h4 class="center-title">О компании</h4>
+                                    <ul class="footer-navigate">
+                                        {% for p in pages %}
+                                            <li><a href="/company/{{ p.slug }}">{{ p.title }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="span4 footer-right">
+                                    <h4 class="center-title">Меню</h4>
+                                    <ul class="footer-navigate">
+                                        <li>
+                                            <a href="/">Главная</a>
+                                        </li>
+                                        <li>
+                                            <a href="/team/">Команда</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/">Новости</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row show-grid">
+                        <div class="span12">
+                            <p> Copyright 2013. ЭСТ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.isotope.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.fancybox.pack.js?v=2.1.0"></script>
+        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/revolution.custom.js"></script>
+    <script type="text/javascript" src="/static/js/custom.js"></script>
+    </body>
+</html>

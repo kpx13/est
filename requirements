@@ -7,3 +7,5 @@ django-keyedcache
 django-admin-tools
 django-livesettings
 pytils
+django-mptt
+feincms
