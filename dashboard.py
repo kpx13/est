@@ -32,8 +32,8 @@ class CustomIndexDashboard(Dashboard):
             deletable=False,
             collapsible=False,
             children=[
-                [u'Менеджер файлов', '/admin/filebrowser/browse/'],
-                [u'Настройки сайта', '/settings/MyApp'],
+                #[u'Менеджер файлов', '/admin/filebrowser/browse/'],
+                #[u'Настройки сайта', '/settings/MyApp'],
                 [_('Return to site'), '/'],
                 [_('Change password'),
                  reverse('%s:password_change' % site_name)],

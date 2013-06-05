@@ -3,7 +3,7 @@ from django.contrib import admin
 import models
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('slug', 'date', 'title')
+    list_display = ('title', 'date')
     search_fields = ('title', 'content')
     ordering = ('date', )
 

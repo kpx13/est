@@ -11,10 +11,15 @@ class FileInline(admin.TabularInline):
 
 class CategoryAdmin(MPTTModelAdmin):
     inlines = [FileInline, ]
-    list_display = ( 'name', 'order')
+    list_display = ('name', 'order')
     search_fields = ('name', )
     mptt_level_indent = 20
 
+class FileAdmin(admin.ModelAdmin):
+    model = models.DocFile
+    list_display = ('name', 'category', 'desc')
+    search_fields = ('name', 'desc')
+    
 
 admin.site.register(models.Category, CategoryAdmin)
-admin.site.register(models.DocFile)
+admin.site.register(models.DocFile, FileAdmin)

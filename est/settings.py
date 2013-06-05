@@ -40,7 +40,7 @@ USE_L10N = True
 MEDIA_ROOT = MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
 MEDIA_URL = '/media/'
-ADMIN_TOOLS_THEMING_CSS = 'styles/admin.css'
+ADMIN_TOOLS_THEMING_CSS = 'css/admin.css'
 
 
 STATIC_ROOT = STATICFILES_ROOT = os.path.join(PROJECT_ROOT, 'static')

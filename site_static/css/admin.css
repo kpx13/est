@@ -1,0 +1,58 @@
+body
+{
+    
+}
+
+#header {
+    background: white;
+}
+
+#user-tools{
+/*     display: none; */
+}
+
+.dashboard-title{
+    display: none;
+}
+
+#header #branding h1 {
+    margin: 0;
+    padding: 5px 0px;
+    text-indent: -9999px;
+    background: white url(/static/img/logo.png) no-repeat;
+    height: 58px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    
+}
+
+a {
+    color: #8c203a !important;
+}
+
+#header a {
+    color: #8c203a !important;
+}
+
+
+#header
+{
+    color: #8c203a;
+}
+
+#header #branding a
+{
+    color: black !important;
+    font-size: large !important;
+}
+
+.grp-horizontal-list
+{
+}
+
+.grp-horizontal-list ul li
+{
+    list-style: none;
+}
+
+tr.row1 {background-color: #aaa !important; color: white}
