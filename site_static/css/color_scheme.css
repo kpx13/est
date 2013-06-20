@@ -1,3 +1,18 @@
+body {
+    background: #fff url("../img/bg.jpg") top center no-repeat fixed;
+}
+
+#out_container {
+    margin:0 auto;
+    background:#fff;
+    box-shadow:0 0 10px rgba(0,0,0,.5)
+
+}
+#out_container.boxed {
+    margin:20px auto;
+    width: 960px;
+}
+
 /* Color of the very top line in reDesign Template
 ---------------------------------------------------------------------- */
 

@@ -60,14 +60,14 @@ class CustomIndexDashboard(Dashboard):
             )
         )
         
-        self.children.append(
-            modules.ModelList(
-                title = u'Слайдшоу',
-                models=(
-                    'slideshow.models.Slider',
-                ),
-            )
-        )
+        #self.children.append(
+            #modules.ModelList(
+                #title = u'Слайдшоу',
+                #models=(
+                    #'slideshow.models.Slider',
+                #),
+            #)
+        #)
         
         self.children.append(
             modules.ModelList(

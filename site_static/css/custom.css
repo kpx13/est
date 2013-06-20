@@ -6,6 +6,9 @@
 
 /* Default */
 @media (min-width: 980px) {
+    #out_container.boxed, #out_container.boxed-attached {
+        width:980px;
+    }
     .three-columns-central {
         border-left: 1px solid #D4D4D4;
         border-right: 1px solid #D4D4D4;
@@ -245,6 +248,9 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+    #out_container.boxed, #out_container.boxed-attached {
+        width:764px;
+    }
     .three-columns-central {
         border-left: 1px solid #D4D4D4;
         border-right: 1px solid #D4D4D4;
@@ -517,6 +523,16 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+    body {
+        padding:0;
+    }
+    #out_container {
+        padding:0 20px;}
+    #out_container.boxed, #out_container.boxed-attached {
+        width:auto;
+        margin-left:20px;
+        margin-right:20px;
+    }
     .sidebar {
         width: auto;
     }
