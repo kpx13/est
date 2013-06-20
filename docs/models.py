@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
-
+import pytils
 
 class Category(MPTTModel):
     name = models.CharField(max_length=50, unique=True, verbose_name=u'название')
@@ -24,7 +24,7 @@ class DocFile(models.Model):
     name = models.CharField(max_length=128, verbose_name=u'название')
     date = models.DateField(auto_now=True, verbose_name=u'дата')
     desc = models.CharField(max_length=512, blank=True, verbose_name=u'описание')
-    file = models.FileField(upload_to= 'uploads/docs', blank=True, max_length=256, verbose_name=u'файл', help_text=u'')
+    file = models.FileField(upload_to=lambda instance, filename: 'uploads/docs/' + pytils.translit.translify(filename), blank=True, max_length=256, verbose_name=u'файл', help_text=u'')
     order = models.IntegerField(default=0, blank=True, verbose_name=u'порядок')
     
     class Meta:
