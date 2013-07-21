@@ -23,6 +23,17 @@
         <link rel="stylesheet" href="/static/css/font-awesome-ie7.css" />
         <link rel="stylesheet" href="/static/css/flexslider.css" />
         <link rel="stylesheet" href="/static/css/jquery.fancybox.css?v=2.1.0" type="text/css" media="screen" />
+        
+         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.isotope.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.fancybox.pack.js?v=2.1.0"></script>
+        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/static/js/revolution.custom.js"></script>
+<!--     <script type="text/javascript" src="/static/js/custom.js"></script> -->
+    
         <!--[if lte IE 8]>
             <link rel="stylesheet" type="text/css" href="/static/css/IE-fix.css" />
         <![endif]-->
@@ -84,15 +95,10 @@
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <li class="single">
+                                        <a href="/team/">
                                             Команда<i></i>
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            {% recursetree team %}
-                                                <li><a href="/team/{{ node.id }}">{{ node.name }}</a></li>
-                                            {% endrecursetree %}
-                                        </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -193,14 +199,6 @@
         </footer>
         </div>
 
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/js/bootstrap.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.isotope.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.fancybox.pack.js?v=2.1.0"></script>
-        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-        <script type="text/javascript" src="/static/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript" src="/static/js/revolution.custom.js"></script>
-    <script type="text/javascript" src="/static/js/custom.js"></script>
+       
     </body>
 </html>

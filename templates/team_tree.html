@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load mptt_tags %}
+
+{% block extended_head %}
+    <link rel="stylesheet" href="/static/jorg/css/jquery.jOrgChart.css"/>
+    <link href="/static/jorg/css/prettify.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/static/jorg/prettify.js"></script>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    
+    <script src="/static/jorg/jquery.jOrgChart.js"></script>
+
+    <script>
+    jQuery(document).ready(function() {
+        $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+        <div class="row show-grid">
+            <div class="span12">
+
+                <div id="breadcrumb">
+                    <ul>
+                        <li class="home"><a href="/">Главная</a></li>
+                        <li><a href='/team/'>Команда</a></li>
+                        {% for b in breadcrumb %}
+                            <li><a href='/team/{{ b.id }}'>{{ b.name }}</a></li>
+                        {% endfor %}
+                        <li>{{ item.name }}</li>
+                    </ul>
+                </div>
+                
+                    
+                    
+                <ul id="org" style="display:none">
+                    <li>Генеральный директор
+                    <ul>
+                        {% recursetree team %}
+                            <li><a href='/team/{{ node.id }}'>{{ node.name }}</a>
+                                {% if not node.is_leaf_node %}
+                                    <ul>
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endrecursetree %}
+                    </ul>
+                </ul>            
+                
+                <div id="chart" class="orgChart"></div>
+                
+                <script>
+                    jQuery(document).ready(function() {
+                        
+                        /* Custom jQuery for the example */
+                        $("#show-list").click(function(e){
+                            e.preventDefault();
+                            
+                            $('#list-html').toggle('fast', function(){
+                                if($(this).is(':visible')){
+                                    $('#show-list').text('Hide underlying list.');
+                                    $(".topbar").fadeTo('fast',0.9);
+                                }else{
+                                    $('#show-list').text('Show underlying list.');
+                                    $(".topbar").fadeTo('fast',1);                  
+                                }
+                            });
+                        });
+                        
+                        $('#list-html').text($('#org').html());
+                        
+                       
+                    });
+                </script>
+                    
+            </div>
+        </div>
+{% endblock %}
