@@ -1234,12 +1234,10 @@ ul.icons {
     padding-bottom: 0;
 }
 .navbar .nav .open .dropdown-menu .active a {
-    background-color: #333333;
     border: none;
     background-image: none;
 }
 .navbar .nav .open .dropdown-menu .active a:hover {
-    background-color: #292929;
     background-image: none !important;
     filter: none;
 }
@@ -1258,7 +1256,6 @@ ul.icons {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0)
 }
 .navbar .nav .active > a, .navbar .nav .active > a:hover, .navbar .nav .active a > i, .navbar .nav .active a > i:hover {
-    background-color: #FFFFFF;
     text-decoration: none;
 }
 .nav-pills > li > a {
@@ -1323,10 +1320,9 @@ ul.icons {
     box-shadow: none;
 }
 .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: #ffffff;
 }
 .navbar .in .nav li.dropdown.open > .dropdown-toggle, .navbar .in .nav li.dropdown.active > .dropdown-toggle, .navbar .in .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: #333333;
+
     color: #ffffff;
 }
 .in .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover {
@@ -1359,7 +1355,7 @@ ul.icons {
     font-size: 12px;
     font-weight: normal;
     height: 27px;
-    background: #ffffff url('../img/menu_icons.png') scroll center 23px no-repeat;
+    background: transparent url('../img/menu_icons.png') scroll center 23px no-repeat;
 }
 .navbar .nav > li.single a i {
     background: none;
@@ -1374,8 +1370,6 @@ ul.icons {
     text-shadow: none;
 }
 .nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover {
-    background-color: #999999;
-    border-color: #999999;
     color: #333333;
 }
 .navbar-inner .in {
@@ -1396,7 +1390,6 @@ ul.icons {
     display: none;
 }
 .navbar .navbar-inner .in li.active a {
-    background-color: #333333;
 }
 .navbar .nav .active > a, .navbar .nav li:hover > a {
     padding-top: 12px;

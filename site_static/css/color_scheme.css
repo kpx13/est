@@ -255,3 +255,37 @@ transition: background-position 0.1s linear;
 color: white;
 background-color: #04C;
 }
+
+.bg-yellow
+{
+    background-color: #f8d48c !important;
+}
+.bg-yellow hr
+{
+    border-color: #f8900d !important;
+}
+
+.bg-yellow .hero-block-1
+{
+    border-color: #f8900d !important;
+}
+
+.bg-green { background-color: #91cb99 !important;}
+.bg-green p { color: #222 !important;}
+.bg-green hr, .bg-green #breadcrumb { border-color: #21cb3a !important;}
+
+.bg-pink { background-color: #e2c4db !important;}
+.bg-pink p { color: #222 !important;}
+.bg-pink hr { border-color: #e235c5 !important;}
+.bg-pink #breadcrumb{ border-color: #e235c5 !important;}
+
+.bg-blue { background-color: #a3c4db !important;}
+.bg-blue p { color: #222 !important;}
+.bg-blue hr { border-color: #479edb !important;}
+.bg-blue #breadcrumb{ border-color: #479edb !important;}
+
+.bg-purple { background-color: #cca7db !important;}
+.bg-purple p { color: #222 !important;}
+.bg-purple hr { border-color: #b24bdb !important;}
+.bg-purple #breadcrumb{ border-color: #b24bdb !important;}
+.bg-purple .post-item-panel { background-color: #b270db !important; border-radius: 5px;}

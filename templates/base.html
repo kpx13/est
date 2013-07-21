@@ -79,29 +79,28 @@
                             </div>
                             <div class="nav-collapse">
                                 <ul class="nav nav-pills">
-                                    <li class="active single">
-                                        <a href="/">
+                                    <li class="{% if 'home' in request_url %}active{% endif %} single bg-yellow">
+                                        <a href="/" class='bg-yellow'>
                                             Главная<i></i>
                                         </a>
                                     </li>
-                                    <li class="single">
-                                        <a href="/team/">
+                                    <li class="{% if 'team' in request_url %}active{% endif %} single bg-green">
+                                        <a href="/team/" class='bg-green'>
                                             Команда<i></i>
                                         </a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <li class="{% if 'company' in request_url %}active{% endif %} dropdown bg-pink">
+                                        <a class="dropdown-toggle bg-pink" data-toggle="dropdown" href="#">
                                             Компания<i></i>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="/team">Структура компании</a></li>
                                             {% for p in pages %}
                                                 <li><a href="/company/{{ p.slug }}">{{ p.title }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <li class="{% if 'docs' in request_url %}active{% endif %} dropdown bg-blue">
+                                        <a class="dropdown-toggle bg-blue" data-toggle="dropdown" href="#">
                                             Документы<i></i>
                                         </a>
                                         <ul class="dropdown-menu">
@@ -110,7 +109,7 @@
                                             {% endrecursetree %}
                                         </ul>
                                     </li>
-                                    <li class="single">
+                                    <li class="{% if 'news' in request_url %}active{% endif %} single bg-purple">
                                         <a href="/news/">
                                             Новости<i></i>
                                         </a>
@@ -122,8 +121,8 @@
                 </div>
             </div>
         </header>
-<!-- MAIN CONTENT AREA -->
-        <div class="main-content">
+
+        <div class="main-content {% block bg_color %}bg-yellow{% endblock %}">
             <div class="container">
             
                 {% if messages %}
