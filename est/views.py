@@ -79,6 +79,9 @@ def docs_page(request, id=None):
     
 def team_page(request, id=None):
     c = get_common_context(request)
+    if not id:
+        return render_to_response('team_tree.html', c, context_instance=RequestContext(request))
+    
     try:
         titles = []
         if id is not None:
