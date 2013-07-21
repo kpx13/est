@@ -14,7 +14,8 @@
                     <li>{{ title }}</li>
                 </ul>
                 </div>
-                <div class="row show-grid clear-both">                   
+                <div class="row show-grid clear-both">
+                   
                     <div id="left-sidebar" class="span3 sidebar">
                         <div class="side-nav sidebar-block">
                             <h2>Страницы</h2>
@@ -37,6 +38,29 @@
                 </div>
             </div>
         </div>
+        
+        <hr />
+
+    <div class="main-block block-posts">
+        <div class="title-wrapper">
+            <h2>Последние новости</h2><a href="/news/" class="all">Все новости&nbsp;&raquo;</a>
+        </div>
+        <div class="row show-grid clear-both">
+            <div class="span12">
+                <div class="row show-grid">
+                    {% for n in news %}
+                    <div class="span3">
+                        <a class="block-post-title" href="/news/{{ n.slug }}">{{ n.title }}</a>
+                        <p class="block-post-date">{{ n.date }}</p>
+                        <p class="block-post-content">{{ n.desc|striptags }}...</p>
+                        <a class="block-post-more" href="/news/{{ n.slug }}">Далее&nbsp;&raquo;</a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     
 {% endblock %}

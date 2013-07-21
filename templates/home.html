@@ -3,70 +3,30 @@
 {% load mptt_tags %}
 
 {% block content %}
+<hr />
 
-{% comment %}
-<div class="bannercontainer" >
-    <div class="banner" >
-        <ul>
-<!-- MAIN CONTENT AREA: SLIDER BANNER (REVOLUTION SLIDER) - SLIDE 2 [SLIDE STYLE=LEFT] -->
-            <li class="slide2" data-transition="slideleft" data-slotamount="10"  data-masterspeed="300">
-                <img alt="" src="static/img/slider02.png" />
-                <div class="caption sft carousel-caption" data-x="472" data-y="69" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none;">
-                    <p class="middle">Is your business website mobile ready?</p>
-
+<div class="main-block block-posts">
+    <div class="title-wrapper">
+        <h2>Последние новости</h2><a href="/news/" class="all">Все новости&nbsp;&raquo;</a>
+    </div>
+    <div class="row show-grid clear-both">
+        <div class="span12">
+            <div class="row show-grid">
+                {% for n in news %}
+                <div class="span3">
+                    <a class="block-post-title" href="/news/{{ n.slug }}">{{ n.title }}</a>
+                    <p class="block-post-date">{{ n.date }}</p>
+                    <p class="block-post-content">{{ n.desc|striptags }}...</p>
+                    <a class="block-post-more" href="/news/{{ n.slug }}">Далее&nbsp;&raquo;</a>
                 </div>
-                <div class="caption sfr carousel-caption" data-x="462" data-y="107" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">20% of all web</p>
-                </div>
-                <div class="caption sfl carousel-caption" data-x="462" data-y="156" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">traffic today is from</p>
-                </div>
-                <div class="caption sfl carousel-caption" data-x="462" data-y="205" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">mobile devices</p>
-                </div>
-                <div class="caption sfb carousel-caption" data-x="474" data-y="262" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none; width: 436px;">
-                    <p class="small">The mobile revolution is here. Is your business ready for it? Built using the latest web technology platform and framework; HTML5, CSS3 and Twitter Bootstrap, bizstrap allows you to create one site that renders beautifully on all devices, including computers, tablet and phones.</p>
-                </div>
-            </li>
-<!-- MAIN CONTENT AREA: SLIDER BANNER (REVOLUTION SLIDER) - SLIDE 3 [SLIDE STYLE=SLIDE DOWN] -->
-            <li class="slide3" data-transition="slidedown" data-slotamount="1" data-masterspeed="300">
-                <img alt="" src="static/img/slider03.png" />
-                <div class="caption sft carousel-caption" data-x="43" data-y="184" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none; padding-left: 0;">
-                    <p class="middle">Create beautiful pages quickly and easily...</p>
-                </div>
-                <div class="caption sfl carousel-caption" data-x="0" data-y="228" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none; padding-left: 0; width: 781px;">
-                    <p class="big">Over 30 Shortcuts and Rapid-Design Page Templates!</p>
-                </div>
-                <div class="caption sfb carousel-caption" data-x="0" data-y="281" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none; padding-left: 0; width: 100%;">
-                    <p class="small">Creating beautiful and highly functional web pages doesn’t have to take hours. In fact, with over 30 pre-made page templates, bizstrap makes<br /> creating great looking web pages quick and easy.</p>
-                </div>
-            </li>
-            
-<!-- MAIN CONTENT AREA: SLIDER BANNER (REVOLUTION SLIDER) - SLIDE 5 [SLIDE STYLE=SLOTFADE HORIZONTAL] -->
-            <li class="slide5" data-transition="slotfade-horizontal"  data-masterspeed="300" data-slotamount="20">
-                <img alt="" src="static/img/slider04.png" />
-                <div class="caption sft carousel-caption" data-x="468" data-y="71" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none; padding-left: 0;">
-                    <p class="middle">Smart, very smart indeed!</p>
-                </div>
-                <div class="caption sfr carousel-caption" data-x="454" data-y="105" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">The Smart Choice for</p>
-                </div>
-                <div class="caption sfr carousel-caption" data-x="454" data-y="154" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">Building Your</p>
-                </div>
-                <div class="caption sfr carousel-caption" data-x="454" data-y="205" data-speed="1000" data-start="1000" data-easing="easeOutBack" style="background: none;">
-                    <p class="big">Business Website</p>
-                </div>
-                <div class="caption sfb carousel-caption" data-x="480" data-y="268" data-speed="1000" data-start="1000" data-easing="easeInBack" style="background: none; padding-left: 0;">
-                    <p class="small">Affordable, effective and easy-to-use bizstrap is the smart choice for building and managing your business website. Smart, very smart indeed!</p>
-                </div>
-            </li>
-
-    </ul>
-        <div class="tp-bannertimer"></div>
+               {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
-{% endcomment %}
+
+<hr />
+
 <div class="row main-block">
     <div class="span12">
         <div class="row">
@@ -80,21 +40,8 @@
 <!-- MAIN CONTENT AREA: bizstrap CUSTOM - HERO BLOCK 2 -->
             <div class="span5 home-block">
                 <div class="grey-box hero-block-1">
-                    <h1>Структура компании</h1>
-             
-                        <ul>
-                            {% recursetree team %}
-                                <li>
-                                    <a href='/team/{{ node.id }}'>{{ node.name }}</a>
-                                    {% if not node.is_leaf_node %}
-                                        <ul class="children">
-                                            {{ children }}
-                                        </ul>
-                                    {% endif %}
-                                </li>
-                            {% endrecursetree %}
-                        </ul>
-                 
+                    <h1>Подблок</h1>
+                    <img src='/media/uploads/employee/z_59735dcb.jpg' />
 <!--                     <a href="#" class="btn btn-warning"><i class="icon-shopping-cart"></i>Buy it now just for $18</a> -->
                 </div>
             </div>
@@ -122,28 +69,6 @@
         </div>
     </div>
     <div class="horizontal-divider span12"></div>
-</div>
-
-<hr>
-<!-- MAIN CONTENT AREA: bizstrap CUSTOM - RECENT POSTS BLOACK (ORIGINALLY DESIGNED FOR HOME PAGE) -->
-<div class="main-block block-posts">
-    <div class="title-wrapper">
-        <h2>Последние новости</h2><a href="/news/" class="all">Все новости&nbsp;&raquo;</a>
-    </div>
-    <div class="row show-grid clear-both">
-        <div class="span12">
-            <div class="row show-grid">
-                {% for n in news %}
-                <div class="span3">
-                    <a class="block-post-title" href="/news/{{ n.slug }}">{{ n.title }}</a>
-                    <p class="block-post-date">{{ n.date }}</p>
-                    <p class="block-post-content">{{ n.desc|striptags }}...</p>
-                    <a class="block-post-more" href="/news/{{ n.slug }}">Далее&nbsp;&raquo;</a>
-                </div>
-               {% endfor %}
-            </div>
-        </div>
-    </div>
 </div>
 
 {% endblock %}

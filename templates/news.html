@@ -18,7 +18,7 @@
                 <div class="sidebar-news-widget sidebar-block">
                     <h2>Все новости</h2>
                     <ul>
-                        {% for n in news %}
+                        {% for n in news_all %}
                             <li>
                                 <a href="/news/{{ n.slug }}">{{ n.title }}</a><br />
                                 <i class="icon-calendar"></i>{{ n.date }}
@@ -29,7 +29,7 @@
 
             </div>
             <div class="span9 main-column two-columns-left">
-                {% for n in news %}
+                {% for n in news_all %}
                     <div class="post-item">
                         <h2>{{ n.title }}</h2>
                         <p class="post-description">{{ n.desc|striptags }}</p>
@@ -38,9 +38,6 @@
                             <ul>
                                 <li class="date">
                                     <p><i class="icon-calendar"></i>{{ n.date }}</p></li>
-<!--                                 <li><p><i class="icon-user"></i>by Admin</p></li> -->
-<!--                                 <li><p><i class="icon-tags"></i><a href="">photos</a>, <a href="">design</a></p></li> -->
-<!--                                 <li class="comments"><p><i class="icon-comments-alt"></i><span>2 comments</span></p></li> -->
                             </ul>
                         </div>
                     </div>

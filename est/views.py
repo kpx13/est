@@ -23,6 +23,7 @@ def get_common_context(request):
     c['team'] = TeamCategory.objects.all()
     c['docs'] = Category.objects.all()
     c['pages'] = CompanyPage.objects.all()
+    c['news'] = Article.objects.all()[:4]
     c.update(csrf(request))
     
     return c
@@ -31,7 +32,6 @@ def home_page(request):
     c = get_common_context(request)
     c['request_url'] = 'home'
     c['slider'] = Slider.objects.filter(show=True)
-    c['news'] = Article.objects.all()[:4]
     c['content'] = Page.get_by_slug('home')['content']
     return render_to_response('home.html', c, context_instance=RequestContext(request))
 
@@ -64,7 +64,7 @@ def news_article_page(request, page_name):
 def news_page(request):
     c = get_common_context(request)
     try:
-        c['news'] = Article.objects.all()
+        c['news_all'] = Article.objects.all()
         return render_to_response('news.html', c, context_instance=RequestContext(request))
     except:
         raise Http404()
@@ -86,14 +86,14 @@ def team_page(request, id=None):
         titles = []
         if id is not None:
             t = c['item'] = TeamCategory.objects.get(id=id)
-            c['inner'] = t.get_descendants()
+            c['inner'] = t.get_descendants().order_by('name')
             while t:
                 t = t.parent
                 titles.append(t)
-            c['employeers'] = Employee.objects.filter(category__in=c['item'].get_descendants(include_self=True))
+            c['employeers'] = Employee.objects.filter(category__in=c['item'].get_descendants(include_self=True)).order_by('name')
         else:
             c['inner'] = c['team']
-            c['employeers'] = Employee.objects.all()
+            c['employeers'] = Employee.objects.all().order_by('name')
                 
         c['breadcrumb'] = titles 
         
